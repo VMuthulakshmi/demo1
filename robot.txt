@@ -1,0 +1,129 @@
+public class robot
+{
+    public static void main(String[] args) {
+        int input1 = 3;
+        int input2=4;
+        String input3 = "2-2-E";
+        String input4 = "R m L m R m L m";
+        
+        String path[]=input3.split("-");
+        int x=Integer.parseInt(path[0]);
+        int y=Integer.parseInt(path[1]);
+        String pos=path[2];
+        String arr[]=input4.split(" ");
+        int f=0;
+        for(String s:arr)
+        {
+        if(s.equals("R"))
+        {
+        if(pos.equals("N"))
+        pos="E";
+        else if(pos.equals("E"))
+        pos="S";
+        else if(pos.equals("S"))
+        pos="W";
+        else
+        pos="N";
+        }
+        else if(s.equals("L"))
+        {
+        if(pos.equals("N"))
+        pos="W";
+        else if(pos.equals("E"))
+        pos="N";
+        else if(pos.equals("S"))
+        pos="E";
+        else
+        pos="S";
+        }
+        else if(f!=1 && s.equals("m") )
+        {
+        if(pos.equals("N"))
+        {
+        if(input2>=y+1)
+        y=y+1;
+        else
+        {
+        f=1;
+            break;
+        }}
+        else if(pos.equals("S"))
+        {
+        if(y>0)
+        y=y-1;
+        else
+        {
+        f=1;
+        break;
+        }}
+        else if(pos.equals("E"))
+        {
+        if(input1>=x+1)
+        x=x+1;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        else
+        {
+        if(x>0)
+        x=x-1;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        }
+        else if(f!=1 && s.equals("M") )
+        {
+        if(pos.equals("N"))
+        {
+        if(input2>=y+2)
+        y=y+2;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        else if(pos.equals("S"))
+        {
+        if(y>0)
+        y=y-2;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        else if(pos.equals("E"))
+        {
+        if(input1>=x+2)
+        x=x+2;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        else
+        {
+        if(x>0)
+        x=x-2;
+        else
+        {
+            f=1;
+            break;
+            }
+        }
+        }
+        }
+        if(f!=1)
+        System.out.println( String.valueOf(x)+"-"+String.valueOf(y)+"-"+String.valueOf(pos));
+        else
+        System.out.println(String.valueOf(x)+"-"+String.valueOf(y)+"-"+String.valueOf(pos)+"-"+"ER");
+        }
+        }
